@@ -35,10 +35,10 @@ ErrCode TestNr(char *numberOfTimes) {
 // Test whether an argument contains only one character:
 ErrCode TestChar(char *printChar) {
   ErrCode fout = NO_ERR;
-  char *point = printChar + 1; 
+  int *point = printChar + 1; 
 
   // if 2nd spot isn't a null then trow error
-  if (*point != '\0') fout = ERR_CHAR;
+  if (*point != '\0') fout = ERR_CHAR
   
   return fout;
 }

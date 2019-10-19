@@ -19,7 +19,7 @@ displayFunctions.o: displayFunctions.c displayFunctions.h syntaxCheck.h errorCod
 #	gcc -c -Wall syntaxCheck.c
 
 clean:
-	rm -f display.o displayFunctions.o
+	rm -f *.o
 
 cleanall: clean
 	rm -f display

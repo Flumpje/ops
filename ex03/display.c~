@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 	    result = setpriority(which, pid, iChild*niceIncr);
 	    prio = getpriority(which, pid);
 	    if (!result) {
-	      printf("child nr%d with an nice value of %d and as last char %s \n", iChild, prio, argv[iChild]);
+	      //printf("child nr%d with an nice value of %d and as last char %s \n", iChild, iChild*niceIncr, argv[iChild]);
 	    PrintCharacters(printMethod, numOfTimes, argv[3+iChild][0]);
 	    } else {
 	      printf("fail");

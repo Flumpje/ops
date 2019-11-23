@@ -18,39 +18,46 @@ int main(int argc, char* argv[], char* envp[]) {
   // If no arguments are given, print help
   if (argc == 1) print_help();
   // Set up struct option array long_options[]
-  
+  int option_index = 0;
   struct option long_options[] = {
     { "file",         required_argument,  NULL, 'f' },
     { "help",         no_argument,        NULL, 'h' },
     { "end",          required_argument,  NULL, 'e' },
-    { "env",          no_argument,        NULL, 'v' },
-    { 0, 0, 0, 0}
+    { "env",          no_argument,        NULL, 'v' }
   };
   
-
-
-
   // Scan the different command-line arguments and options
 
 
-	// loop over all of the options
-	while ((ch = getopt_long(argc, argv, "t:a:", long_options, NULL)) != -1)
-	{
-	    // check to see if a single character or long option came through
-	    switch (ch)
-	    {
-		 // short option 'f'
-		 case 'f':
-		     printf("We see you want to do something whit %s \n", argv[2]);// do something with file.
-		     break;
-		 // short option 'h'
-		 case 'h':
-		     print_help(); // print help
-		     break;
-	    }
-	}
+// loop over all of the options
+while ((ch = getopt_long(argc, argv, "fhev:fhev:012", long_options, option_index)) != -1)
+{
+  // check to see if a single character or long option came through
+  switch (ch)
+  {
+	 // short option 'f'
+	case 'f':
+	  //printf("We see you want to do something whit %s \n", argv[2]);// do something with file.
+    read_file(argv[2], 0);
+	  break;
+	// short option 'h'
+	case 'h':
+	  print_help(); // print help
+	  break;
+  // option end
+  case 'e':
+    read_file(argv[2], 1);
+    break; 
+  // option env
+  case 'v':
+    print_env(argv);
+    break;
+  default:
+  break;
+    }
+}
   // opt = getopt_long(argv[2]);
-  // printf("restult of getop(argv[2]) = %d", opt);
+  // printf("restult of getop(argv[2]) = %i \n", ch);
 
   
   return 0;

@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
   pid_t pid; // fork status
   int which = PRIO_PROCESS;
   
-  //err = SyntaxCheck(argc, argv);  // Check the command-line parameters
+  err = SyntaxCheck(argc, argv);  // Check the command-line parameters
   if(err != NO_ERR) {
     DisplayError(err);        // Print an error message
   } else {
@@ -37,8 +37,6 @@ int main(int argc, char *argv[]) {
     {
       //printf("\n ronde %d", iChild);
       pid = fork();
-
-
       if (pid) {
 	; // parrent fork
         } else if(pid == 0) {
@@ -47,7 +45,7 @@ int main(int argc, char *argv[]) {
 	    result = setpriority(which, pid, iChild*niceIncr);
 	    prio = getpriority(which, pid);
 	    if (!result) {
-	      printf("child nr%d with an nice value of %d and as last char %s \n", iChild, prio, argv[iChild]);
+	      printf("\nchild nr%d with an nice value of %d and as char %s \n", iChild, prio, argv[iChild + 3]);
 	    PrintCharacters(printMethod, numOfTimes, argv[3+iChild][0]);
 	    } else {
 	      printf("fail");

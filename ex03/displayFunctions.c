@@ -15,12 +15,18 @@
 // Check the command-line parameters:
 ErrCode SyntaxCheck(int argc, char **argv) {
   ErrCode errCode = NO_ERR;
-  if(argc != NUM_OF_PARS) {
-    errCode = ERR_PARS;
-  } else {
+  //if(argc != NUM_OF_PARS) {
+  //  errCode = ERR_PARS;
+  //} else {
+  if (1) // dirty stuff
+  {
     errCode = TestType(argv[1]);                        // Test whether argument 1 has the correct value (print type)
     if(errCode == NO_ERR) errCode = TestNr(argv[2]);    // Test whether argument 2 contains a positive integer (number of times)
-    if(errCode == NO_ERR) errCode = TestChar(argv[3]);  // Test whether argument 3 contains only one character (print character)
+    if(errCode == NO_ERR) errCode = TestNr(argv[3]);    // Test whether argument 3 contains a positive integer (nice increment value)
+    //if(errCode == NO_ERR) errCode = TestChar(argv[4]);  // Test whether argument 4 and more contains only one character (print character)
+    for (int i = 4; i < argc; i++){
+      if(errCode == NO_ERR) errCode = TestChar(argv[i]);  // Test whether argument 4 and more contains only one character (print character)
+    }
   }
   return errCode;
 }

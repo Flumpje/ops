@@ -57,10 +57,9 @@ int main(int argc, char *argv[]) {
         else {
             printf("fork error\n");
             exit(1);
-        }
-      wait(NULL);
-      
-    }
+        }      
+    }	
+    wait(NULL);
   }
   
   printf("\n");  // Newline at end

@@ -12,7 +12,7 @@
 
 #define NUM_OF_PARS 4  // Number of arguments on the command line, including the program name
 
-typedef enum {NO_ERR, ERR_PARS, ERR_TYPE, ERR_NR, ERR_CHAR} ErrCode;
+typedef enum {NO_ERR, ERR_PARS, ERR_NR, ERR_NC, ERR_EX} ErrCode;
 /*
   NO_ERR    No syntax error occurred in the command line
   ERR_PARS  The number of command-line parameters is not equal to 4

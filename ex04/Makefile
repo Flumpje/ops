@@ -1,16 +1,16 @@
 # Makefile for OPS exercise 2
 # Use tabs for indentation, not spaces!
 
-all: printversion display
+all: printversion parent
 
 # Link object files and create a binary executable:
-display: display.o displayFunctions.o syntaxCheck.o
-	gcc -Wall -o display display.o displayFunctions.o syntaxCheck.o
+parent: parent.o displayFunctions.o syntaxCheck.o
+	gcc -Wall -o parent parent.o displayFunctions.o syntaxCheck.o
 
 # Compile C-files and create object files (.o).
 # The option -c ensures no linking takes place:
-display.o: display.c displayFunctions.h errorCodes.h
-	gcc -c -Wall display.c
+parent.o: parent.c displayFunctions.h errorCodes.h
+	gcc -c -Wall parent.c
 
 displayFunctions.o: displayFunctions.c displayFunctions.h syntaxCheck.h errorCodes.h
 	gcc -c -Wall displayFunctions.c
@@ -19,10 +19,10 @@ displayFunctions.o: displayFunctions.c displayFunctions.h syntaxCheck.h errorCod
 #	gcc -c -Wall syntaxCheck.c
 
 clean:
-	rm -f display.o displayFunctions.o
+	rm -f parent.o displayFunctions.o
 
 cleanall: clean
-	rm -f display
+	rm -f parent
 
 printversion:
 	gcc --version | grep gcc

@@ -10,17 +10,6 @@
 #include "syntaxCheck.h"
 
 
-// Test whether an argument is one character long and has the correct value (e,p,w):
-ErrCode TestType(char *printMethod) {
-  ErrCode fout = NO_ERR;
-
-  // if not an correct method trow fault
-  if (*printMethod != 'e' && *printMethod != 'p' && *printMethod != 'w') fout = ERR_TYPE;
-  
-  return fout;
-}
-
-
 // Test whether an argument contains a non-negative number:
 ErrCode TestNr(char *numberOfTimes) {
   ErrCode fout = NO_ERR;
@@ -31,14 +20,12 @@ ErrCode TestNr(char *numberOfTimes) {
   return fout;
 }
 
-
-// Test whether an argument contains only one character:
-ErrCode TestChar(char *printChar) {
+// Test whether an argument contains a non-negative number:
+ErrCode TestNc(char *numberOfTimes) {
   ErrCode fout = NO_ERR;
-  char *point = printChar + 1; 
 
-  // if 2nd spot isn't a null then trow error
-  if (*point != '\0') fout = ERR_CHAR;
+  // if negative sign trow fault
+  if (*numberOfTimes == '-')  fout = ERR_NC;
   
   return fout;
 }

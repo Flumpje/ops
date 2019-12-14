@@ -5,6 +5,7 @@
 #include <string.h>   // str(n)cpy()
 #include <stdbool.h>  // Bool type
 #include <getopt.h>   // for getopt_long()
+#include <unistd.h>
 
 // Function prototypes:
 void print_help();
@@ -30,7 +31,7 @@ int main(int argc, char* argv[], char* envp[]) {
 
 
 // loop over all of the options
-while ((ch = getopt_long(argc, argv, "fhev:fhev:012", long_options, option_index)) != -1)
+while ((ch = getopt_long(argc, argv, "f:he:v", long_options, option_index)) != -1)
 {
   // check to see if a single character or long option came through
   switch (ch)
@@ -50,7 +51,7 @@ while ((ch = getopt_long(argc, argv, "fhev:fhev:012", long_options, option_index
     break; 
   // option env
   case 'v':
-    print_env(argv);
+    print_env(envp);
     break;
   default:
   break;
@@ -114,10 +115,14 @@ void print_env(char* envp[]) {
   printf("print_env():\n");
   
   // Scan and print the different environment variables:
-  while(envp[nPar]) {
-    printf("%s\n", envp[nPar]);
-    nPar++;
-  }
-  
-  printf("\nA total of %i environment variables was found.\n\n", nPar);
+  //while(envp[nPar]) {
+  //  printf("%s\n", envp[nPar]);
+  //  nPar++;
+  //}
+   
+  int i; 
+  for (i = 0; envp[i] != NULL; i++) printf("\nenvp[%i] %s", i, envp[i]);  
+
+
+  printf("\nA total of %i environment variables was found.\n\n", i);
 }

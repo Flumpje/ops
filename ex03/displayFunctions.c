@@ -51,10 +51,11 @@ void DisplayError(ErrCode errCode) {
   }
   
   printf("\nCorrect syntax:\n");
-  printf("  ./display <print type> <number of times> <print character>\n\n");
+  printf("  ./display <print type> <number of times> <nice increment> <print character 1> <print character n>\n\n");
   printf("  first parameter: <print type>: e, p or w\n");
   printf("  second parameter: <number of times>: positive integer\n");
-  printf("  third parameter: <print character>: a single character\n");
+  printf("  second parameter: <nice increment>: positive integer\n");
+  printf("  third and more parameter(s): <print character>: a single character\n");
   printf("\n");  // Newline at end
 }
 
